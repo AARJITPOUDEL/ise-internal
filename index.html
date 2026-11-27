@@ -1,0 +1,1335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>International Simple English</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap">
+<style>
+/* Layout: calm two-person workspace. Left rail (bottom tabs on phones), sticky top bar with bell, one content column. */
+:root{
+  --bg:#F2F5F4; --surface:#FFFFFF; --surface-2:#EAF0EE; --ink:#1B2826; --muted:#5F6F6A; --faint:#8E9C97; --line:#DDE5E2;
+  --accent:#2E7A6B; --accent-hover:#25675A; --accent-soft:#DCEEE8; --on-accent:#FFFFFF;
+  --p-a:#4F63C6; --p-a-soft:#E4E7F8; --p-m:#B9603F; --p-m-soft:#F6E5DD;
+  --u-low:#5E7F75; --u-low-bg:#E5EEEA; --u-med:#946A0C; --u-med-bg:#F5EBD2; --u-high:#B8592A; --u-high-bg:#F8E3D7; --u-urg:#B83636; --u-urg-bg:#F8DCDC;
+  --danger:#B83636; --scrim:rgba(14,28,24,.34);
+  --shadow:0 1px 2px rgba(20,44,38,.05),0 6px 20px rgba(20,44,38,.06);
+  --shadow-lg:0 24px 64px rgba(20,44,38,.20);
+  --r:18px; --gut:32px;
+  --f-head:'Manrope',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-body:'Nunito Sans',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1715; --surface:#17211E; --surface-2:#1F2B28; --ink:#E2EBE8; --muted:#9AABA5; --faint:#6D7D78; --line:#293532;
+  --accent:#6CC4AF; --accent-hover:#86D3C0; --accent-soft:#1C3530; --on-accent:#0D1A17;
+  --p-a:#9AA6F2; --p-a-soft:#252A48; --p-m:#EE9F80; --p-m-soft:#3C2920;
+  --u-low:#9DB7AE; --u-low-bg:#22302C; --u-med:#E4B85A; --u-med-bg:#382F19; --u-high:#F09B6C; --u-high-bg:#3B291E; --u-urg:#F08080; --u-urg-bg:#412426;
+  --danger:#F08080; --scrim:rgba(0,0,0,.55);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25); --shadow-lg:0 24px 64px rgba(0,0,0,.5);
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1715; --surface:#17211E; --surface-2:#1F2B28; --ink:#E2EBE8; --muted:#9AABA5; --faint:#6D7D78; --line:#293532;
+  --accent:#6CC4AF; --accent-hover:#86D3C0; --accent-soft:#1C3530; --on-accent:#0D1A17;
+  --p-a:#9AA6F2; --p-a-soft:#252A48; --p-m:#EE9F80; --p-m-soft:#3C2920;
+  --u-low:#9DB7AE; --u-low-bg:#22302C; --u-med:#E4B85A; --u-med-bg:#382F19; --u-high:#F09B6C; --u-high-bg:#3B291E; --u-urg:#F08080; --u-urg-bg:#412426;
+  --danger:#F08080; --scrim:rgba(0,0,0,.55);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25); --shadow-lg:0 24px 64px rgba(0,0,0,.5);
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:25;background:var(--bg)}
+body.noscroll{overflow:hidden}
+[hidden]{display:none!important}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0;padding:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3{font-family:var(--f-head);margin:0;letter-spacing:-.015em;text-wrap:balance}
+h1{font-size:26px;font-weight:800}
+.ic{width:18px;height:18px;flex:none}
+.grow{flex:1}
+.muted{color:var(--muted)}
+.sub{margin:2px 0 0;color:var(--muted);font-size:14px}
+.lab{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- buttons & inputs ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 18px;border-radius:999px;font-weight:700;font-size:14px;white-space:nowrap;transition:background .15s,transform .1s}
+.btn:active{transform:scale(.98)}
+.btn.primary{background:var(--accent);color:var(--on-accent)}
+.btn.primary:hover{background:var(--accent-hover)}
+.btn.ghost{background:var(--surface-2)}
+.btn.ghost:hover{background:var(--line)}
+.btn.red{background:var(--danger);color:var(--surface)}
+.btn.sm{height:32px;padding:0 13px;font-size:13px}
+.btn[disabled]{opacity:.6;pointer-events:none}
+.icon-btn{width:36px;height:36px;border-radius:50%;display:inline-grid;place-items:center;color:var(--muted);flex:none;transition:background .15s,color .15s}
+.icon-btn:hover{background:var(--surface-2);color:var(--ink)}
+.link{color:var(--accent);font-weight:700;font-size:13px}
+.link:hover{text-decoration:underline}
+.in{width:100%;padding:10px 13px;border-radius:12px;border:1px solid var(--line);background:var(--surface);transition:border-color .15s,box-shadow .15s}
+textarea.in{resize:vertical;line-height:1.55}
+.in:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.in::placeholder,textarea::placeholder,input::placeholder{color:var(--faint)}
+.field{display:grid;gap:7px}
+.seg{display:flex;gap:4px;padding:4px;border-radius:14px;background:var(--surface-2)}
+.seg button{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:34px;padding:0 10px;border-radius:10px;font-weight:700;font-size:13px;color:var(--muted);white-space:nowrap;transition:background .15s,color .15s}
+.seg button:hover{color:var(--ink)}
+.seg button.on{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.udot{width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}
+.seg.urg button.on.u-low{color:var(--u-low)} .seg.urg button.on.u-medium{color:var(--u-med)} .seg.urg button.on.u-high{color:var(--u-high)} .seg.urg button.on.u-urgent{color:var(--u-urg)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:99px;background:linear-gradient(to right,var(--accent) var(--p,0%),var(--surface-2) var(--p,0%));margin:10px 0 4px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--surface);border:3px solid var(--accent);box-shadow:var(--shadow);cursor:grab}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--surface);border:3px solid var(--accent);cursor:grab}
+
+/* ---------- avatars & pills ---------- */
+.av{--s:34px;width:var(--s);height:var(--s);border-radius:50%;display:inline-grid;place-items:center;font:800 12px/1 var(--f-head);flex:none;letter-spacing:.02em}
+.av.sm{--s:26px;font-size:10px}.av.xs{--s:20px;font-size:9px}.av.lg{--s:52px;font-size:17px}
+.av-aarjit{background:var(--p-a-soft);color:var(--p-a)}
+.av-mo{background:var(--p-m-soft);color:var(--p-m)}
+.av-x{background:var(--surface-2);color:var(--muted)}
+.pill{display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 9px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.u-low{color:var(--u-low);background:var(--u-low-bg)} .u-medium{color:var(--u-med);background:var(--u-med-bg)}
+.u-high{color:var(--u-high);background:var(--u-high-bg)} .u-urgent{color:var(--u-urg);background:var(--u-urg-bg)}
+.seg.urg button{background:transparent}
+.seg.urg button.on{background:var(--surface)}
+.mark{width:40px;height:40px;border-radius:13px;background:var(--accent);color:var(--on-accent);display:inline-grid;place-items:center;font:800 13px/1 var(--f-head);letter-spacing:.06em;flex:none}
+.mark.sm{width:32px;height:32px;border-radius:10px;font-size:11px}
+
+/* ---------- login ---------- */
+.login{min-height:100%;display:grid;place-items:center;padding-block:40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  background:radial-gradient(60% 50% at 20% 10%,var(--accent-soft),transparent 70%),radial-gradient(50% 50% at 90% 90%,var(--p-a-soft),transparent 70%),var(--bg)}
+.lcard{width:100%;max-width:410px;background:var(--surface);border-radius:28px;padding:32px 28px 28px;box-shadow:var(--shadow-lg);display:grid;gap:22px}
+.lcard h1{font-size:24px;line-height:1.2}
+.who{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.whobtn{display:grid;justify-items:center;gap:10px;padding:18px 8px 16px;border-radius:18px;border:1.5px solid var(--line);font-weight:700;transition:border-color .15s,background .15s}
+.whobtn:hover{border-color:var(--faint)}
+.whobtn.on{border-color:var(--accent);background:var(--accent-soft)}
+.lerr{color:var(--danger);font-size:13px;margin:0;min-height:20px}
+
+/* ---------- app shell ---------- */
+.app{display:grid;grid-template-columns:252px minmax(0,1fr);min-height:100%}
+.side{position:sticky;top:0;height:100vh;height:100dvh;display:flex;flex-direction:column;gap:8px;padding:22px 14px 16px;border-right:1px solid var(--line);background:var(--surface)}
+.brand{display:flex;gap:11px;align-items:center;padding:0 6px 18px}
+.brand b{font:800 15px/1.25 var(--f-head);letter-spacing:-.01em}
+.nav{display:grid;gap:3px}
+.nav button{display:flex;align-items:center;gap:12px;width:100%;padding:11px 12px;border-radius:13px;color:var(--muted);font-weight:700;font-size:14.5px;text-align:left;transition:background .15s,color .15s}
+.nav button:hover{background:var(--surface-2);color:var(--ink)}
+.nav button.on{background:var(--accent-soft);color:var(--accent)}
+.cnt{margin-left:auto;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:var(--accent);color:var(--on-accent);font:800 11px/20px var(--f-head);text-align:center}
+.side-foot{margin-top:auto;display:grid;gap:10px}
+.sync{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);padding:0 8px}
+.sync i{width:8px;height:8px;border-radius:50%;background:var(--faint);flex:none}
+.sync.live i{background:var(--accent)} .sync.warn i{background:var(--u-med)} .sync.bad i{background:var(--danger)}
+.me{display:flex;align-items:center;gap:10px;padding:10px;border-radius:16px;background:var(--surface-2)}
+.me .mename{display:grid;line-height:1.25;min-width:0;flex:1}
+.me .mename b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.me .mename span{font-size:12px;color:var(--muted)}
+.main{min-width:0;display:flex;flex-direction:column}
+.pad{padding-left:max(var(--gut),env(safe-area-inset-left,0px));padding-right:max(var(--gut),env(safe-area-inset-right,0px))}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;gap:12px;padding-block:14px;background:var(--bg)}
+.top .ttl{display:grid;line-height:1.2;min-width:0;flex:1}
+.top h2{font-size:15px;font-weight:800}
+.top .ttl span{font-size:12.5px}
+.bell{position:relative;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line);color:var(--muted);transition:color .15s}
+.bell:hover,.bell.on{color:var(--ink)}
+.bell .ic{width:20px;height:20px}
+.badge{position:absolute;top:-3px;right:-3px;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:var(--danger);color:var(--surface);font:800 11px/19px var(--f-head);text-align:center;border:2px solid var(--bg)}
+.only-m{display:none}
+.bannerwrap:empty{display:none}
+.bannerwrap{padding-bottom:6px}
+.banner{max-width:1016px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 10px 10px 14px;border-radius:16px;background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 22%,transparent);animation:drop .35s ease}
+.banner .btext{flex:1;min-width:0;font-size:14px}
+.banner .bsnip{display:block;color:var(--muted);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.banner .bact{display:flex;align-items:center;gap:6px;flex:none}
+.pulse{width:10px;height:10px;border-radius:50%;background:var(--accent);flex:none;box-shadow:0 0 0 0 var(--accent);animation:pulse 2s infinite}
+.view{width:100%;max-width:1080px;margin:0 auto;padding-top:10px;padding-bottom:56px;display:grid;gap:18px;align-content:start}
+.vhead{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:8px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-weight:700;font-size:13px;color:var(--muted);transition:all .15s}
+.chip:hover{color:var(--ink)}
+.chip.on{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.chip .n{font-size:12px;opacity:.7;font-variant-numeric:tabular-nums}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.empty{display:grid;justify-items:center;gap:10px;text-align:center;padding:48px 20px;border:1.5px dashed var(--line);border-radius:var(--r);color:var(--muted)}
+.empty .eic{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}
+.empty .eic .ic{width:24px;height:24px}
+.empty b{color:var(--ink);font:700 16px var(--f-head)}
+.empty p{margin:0;max-width:40ch;font-size:14px}
+.loading{padding:32px;text-align:center;color:var(--muted)}
+.tabbar{display:none}
+
+/* ---------- tasks ---------- */
+.tlist{display:grid;gap:8px}
+.trow{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;background:var(--surface);border:1px solid var(--line);cursor:pointer;transition:box-shadow .15s,border-color .15s}
+.trow:hover{box-shadow:var(--shadow);border-color:transparent}
+.check{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;color:transparent;flex:none;transition:all .15s}
+.check .ic{width:15px;height:15px;stroke-width:3}
+.check:hover{border-color:var(--accent);color:var(--accent)}
+.check.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.tmain{flex:1;min-width:0;display:grid;gap:5px}
+.ttitle{font-weight:700;font-size:15px;line-height:1.35;overflow-wrap:anywhere;display:flex;align-items:center;gap:8px}
+.trow.done .ttitle{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--faint)}
+.newdot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
+.tmeta{display:flex;align-items:center;gap:6px 12px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.tmeta>span{display:inline-flex;align-items:center;gap:5px}
+.tmeta .ic{width:14px;height:14px}
+.due.over{color:var(--u-urg);font-weight:700} .due.soon{color:var(--u-high);font-weight:700}
+.tside{display:flex;align-items:center;gap:10px;flex:none}
+.bar{width:70px;height:6px;border-radius:9px;background:var(--surface-2);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:inherit}
+.pct{font-size:12.5px;font-weight:700;color:var(--muted);width:36px;text-align:right;font-variant-numeric:tabular-nums}
+
+/* ---------- drawer / modal ---------- */
+.overlay{position:fixed;inset:0;z-index:50}
+.scrim{position:absolute;inset:0;background:var(--scrim);animation:fade .2s ease}
+.dcard{position:absolute;top:0;right:0;bottom:0;width:min(540px,100%);display:flex;flex-direction:column;background:var(--surface);box-shadow:var(--shadow-lg);animation:slide .28s cubic-bezier(.2,.8,.2,1);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-right:env(safe-area-inset-right,0px)}
+.dhead{display:flex;align-items:center;gap:6px;padding:14px 16px 14px 22px;border-bottom:1px solid var(--line);min-height:64px}
+.dhead .confirm{font-weight:700;font-size:14px}
+.dscroll{flex:1;overflow:auto;padding:22px;display:grid;gap:22px;align-content:start}
+.dtitle{font-size:22px;line-height:1.3;overflow-wrap:anywhere}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;margin:0}
+.meta div{display:grid;gap:4px;min-width:0}
+.meta dt{font-size:12px;font-weight:700;color:var(--muted)}
+.meta dd{margin:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:600;font-size:14px}
+.meta .due{font-size:12px}
+.box{display:grid;gap:10px;padding:16px;border-radius:16px;background:var(--surface-2)}
+.box .seg{background:var(--bg)}
+.boxhead{display:flex;justify-content:space-between;align-items:center}
+.boxhead b{font:800 18px var(--f-head);font-variant-numeric:tabular-nums}
+.notestext{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14.5px}
+.thread{display:grid;gap:14px}
+.h3{font-size:15px;font-weight:800}
+.cmts{display:grid;gap:12px}
+.cmt{display:flex;gap:10px;align-items:flex-start}
+.cbody{flex:1;min-width:0;padding:10px 13px;border-radius:4px 16px 16px 16px;background:var(--surface-2)}
+.cmt.mine .cbody{background:var(--accent-soft)}
+.cmeta{display:flex;gap:8px;align-items:baseline;font-size:12px;color:var(--muted)}
+.cmeta b{color:var(--ink);font-size:13px}
+.ctext{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px}
+.empty-sm{margin:0;color:var(--muted);font-size:13.5px}
+.composer{display:flex;gap:8px;align-items:flex-end}
+.dcard .composer{padding:12px 16px;border-top:1px solid var(--line)}
+.composer textarea{flex:1;resize:none;min-height:42px;max-height:160px;border-radius:21px;padding:10px 16px}
+.composer .btn{width:42px;height:42px;padding:0}
+.overlay.center{display:grid;place-items:center;padding-block:16px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mcard{position:relative;width:min(560px,100%);max-height:calc(100dvh - 32px);display:flex;flex-direction:column;background:var(--surface);border-radius:24px;box-shadow:var(--shadow-lg);animation:pop .22s ease}
+.mhead{display:flex;align-items:center;justify-content:space-between;padding:20px 18px 12px 24px}
+.mhead h2{font-size:20px}
+.mbody{overflow:auto;padding:4px 24px 20px;display:grid;gap:18px}
+.mfoot{display:flex;justify-content:flex-end;gap:10px;padding:14px 24px 20px;border-top:1px solid var(--line)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.title-in{font:700 17px var(--f-head);padding:12px 14px}
+
+/* ---------- notes ---------- */
+.notes{display:grid;grid-template-columns:280px minmax(0,1fr);gap:16px;align-items:start}
+.nlist{padding:8px;display:grid;gap:2px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 80px);max-height:calc(100dvh - 120px);overflow:auto}
+.nitem{display:grid;gap:3px;width:100%;text-align:left;padding:12px;border-radius:13px;transition:background .15s}
+.nitem:hover{background:var(--surface-2)}
+.nitem.on{background:var(--accent-soft)}
+.nitem .nt{font-weight:700;font-size:14px;display:flex;gap:8px;align-items:center;min-width:0}
+.nitem .nt span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nitem .ns{font-size:12.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nitem .nm{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--faint)}
+.neditor{padding:16px 26px 22px;display:grid;gap:10px;min-height:70vh;align-content:start;min-width:0}
+.nebar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-height:36px;font-size:12.5px;color:var(--muted)}
+.save{font-weight:700;color:var(--accent)}
+.ntitle{border:0;background:transparent;font:800 26px/1.25 var(--f-head);letter-spacing:-.015em;padding:4px 0;width:100%;outline:none}
+.ntools{display:flex;gap:6px;flex-wrap:wrap}
+.ntools button{height:28px;padding:0 11px;border-radius:999px;background:var(--surface-2);font-size:12.5px;font-weight:700;color:var(--muted)}
+.ntools button:hover{color:var(--ink)}
+.nbody{border:0;background:transparent;resize:vertical;min-height:50vh;font-size:16px;line-height:1.8;padding:8px 0;width:100%;outline:none}
+.ncmts{border-top:1px solid var(--line);padding-top:12px}
+.ncmts summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--muted);list-style:none;display:flex;align-items:center;gap:8px}
+.ncmts summary::-webkit-details-marker{display:none}
+.ncmts[open] summary{margin-bottom:12px;color:var(--ink)}
+.ncmts .cmts{margin-bottom:12px}
+.back{display:none}
+.ned-empty{display:grid;place-items:center;text-align:center;color:var(--muted);min-height:50vh;gap:8px}
+
+/* ---------- logs ---------- */
+.logform{padding:16px;display:grid;gap:12px}
+.logform textarea{min-height:84px}
+.lfrow{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+.mini{display:grid;gap:4px;font-size:12px;font-weight:700;color:var(--muted)}
+.mini .in{padding:8px 11px;font-weight:600;color:var(--ink)}
+.mini input[type=number]{width:100px}
+.day{display:grid;gap:8px}
+.dayh{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;padding:0 4px}
+.dayh h3{font-size:15px}
+.dayh span{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.daylist{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.log{display:flex;gap:12px;padding:16px}
+.log+.log{border-top:1px solid var(--line)}
+.log.flash{animation:flash 1.6s ease}
+.lbody{flex:1;min-width:0;display:grid;gap:4px}
+.lmeta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.lmeta b{color:var(--ink);font-size:14px}
+.hrs{padding:1px 8px;border-radius:999px;background:var(--surface-2);font-weight:700;font-size:12px;color:var(--ink);font-variant-numeric:tabular-nums}
+.ltext{white-space:pre-wrap;overflow-wrap:anywhere}
+.lact{display:flex;gap:14px;align-items:center;margin-top:4px}
+.lthread{display:grid;gap:12px;margin-top:10px;padding-top:12px;border-top:1px dashed var(--line)}
+
+/* ---------- links ---------- */
+.linkform{padding:16px;display:grid;grid-template-columns:2fr 1.2fr;gap:10px}
+.linkform .full{grid-column:1/-1}
+.lfoot{grid-column:1/-1;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.toggle{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;cursor:pointer;user-select:none}
+.toggle input{width:18px;height:18px;accent-color:var(--accent)}
+.lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));gap:12px}
+.lk{display:flex;gap:14px;padding:16px;align-items:flex-start;transition:box-shadow .15s}
+.lk:hover{box-shadow:var(--shadow)}
+.lk.flash{animation:flash 1.6s ease}
+.kind{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;font:800 10.5px/1 var(--f-head);letter-spacing:.03em;flex:none;text-transform:uppercase}
+.k-doc{background:var(--p-a-soft);color:var(--p-a)} .k-sheet{background:var(--accent-soft);color:var(--accent)} .k-slides{background:var(--u-med-bg);color:var(--u-med)}
+.k-form{background:var(--p-m-soft);color:var(--p-m)} .k-drive{background:var(--u-high-bg);color:var(--u-high)} .k-meet{background:var(--accent-soft);color:var(--accent)} .k-web{background:var(--surface-2);color:var(--muted)}
+.lkmain{flex:1;min-width:0;display:grid;gap:3px}
+.lktitle{font-weight:700;font-size:15px;text-decoration:none;overflow-wrap:anywhere;display:inline-flex;align-items:center;gap:6px}
+.lktitle:hover{color:var(--accent)}
+.lktitle .ic{width:14px;height:14px;color:var(--faint)}
+.lkdom{font-size:12.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lknote{margin:4px 0 0;font-size:13.5px;overflow-wrap:anywhere}
+.lkmeta{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:12px;color:var(--faint)}
+.lkact{display:flex;flex-direction:column;gap:2px}
+.inline-confirm{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;font-weight:700}
+
+/* ---------- panel & toast ---------- */
+.panel{position:fixed;top:calc(env(safe-area-inset-top,0px) + 66px);right:max(24px,env(safe-area-inset-right,0px));width:min(390px,calc(100vw - 32px));max-height:min(560px,calc(100dvh - 160px));overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow-lg);z-index:40;animation:pop .18s ease}
+.phead{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 10px;position:sticky;top:0;background:var(--surface)}
+.phead b{font:800 15px var(--f-head)}
+.plist{display:grid;padding:0 8px 8px}
+.pitem{display:flex;gap:11px;width:100%;text-align:left;padding:11px 10px;border-radius:14px;align-items:flex-start;transition:background .15s}
+.pitem:hover{background:var(--surface-2)}
+.pitem .ptext{font-size:13.5px;line-height:1.4}
+.pitem .psnip{font-size:12.5px;color:var(--muted);margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pitem .ptime{font-size:11.5px;color:var(--faint);margin-top:3px}
+.pitem.unread{background:var(--accent-soft)}
+.pempty{padding:8px 18px 22px;color:var(--muted);font-size:13.5px;margin:0}
+.pme{display:grid;gap:14px;padding:18px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:999px;font-weight:700;font-size:14px;box-shadow:var(--shadow-lg);max-width:calc(100vw - 32px);text-align:center;animation:pop .2s ease}
+
+@keyframes fade{from{opacity:0}}
+@keyframes slide{from{transform:translateX(40px);opacity:0}}
+@keyframes pop{from{transform:translateY(6px) scale(.98);opacity:0}}
+@keyframes drop{from{transform:translateY(-8px);opacity:0}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 50%,transparent)}70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@keyframes flash{0%,40%{background:var(--accent-soft)}}
+@media (prefers-reduced-motion: reduce){*,*::before{animation:none!important;transition:none!important}}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .notes{grid-template-columns:1fr}
+  .notes.show-editor .nlist{display:none}
+  .notes:not(.show-editor) .neditor{display:none}
+  .nlist{position:static;max-height:none}
+  .back{display:inline-flex}
+  .neditor{padding:14px 18px 20px}
+}
+@media (max-width:820px){
+  :root{--gut:16px}
+  .app{grid-template-columns:1fr}
+  .side{display:none}
+  .only-m{display:inline-flex}
+  .main{padding-bottom:calc(74px + env(safe-area-inset-bottom,0px))}
+  .tabbar{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding-top:6px;padding-bottom:calc(6px + env(safe-area-inset-bottom,0px));padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px))}
+  .tabbar button{position:relative;display:grid;justify-items:center;gap:3px;padding:6px 2px;border-radius:12px;font-size:11.5px;font-weight:700;color:var(--muted)}
+  .tabbar button .ic{width:22px;height:22px}
+  .tabbar button.on{color:var(--accent)}
+  .tabbar .cnt{position:absolute;top:0;left:calc(50% + 6px);margin:0}
+  .panel{right:max(16px,env(safe-area-inset-right,0px))}
+  .toast{bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+  h1{font-size:23px}
+  .bar{display:none}
+  .trow{padding:13px 14px;gap:12px}
+  .overlay.center{place-items:end center;padding:0}
+  .mcard{width:100%;border-radius:24px 24px 0 0;max-height:calc(100dvh - 24px - env(safe-area-inset-top,0px));padding-bottom:env(safe-area-inset-bottom,0px)}
+  .mbody,.mhead,.mfoot{padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+  .linkform{grid-template-columns:1fr}
+  .banner{flex-wrap:wrap}
+  .banner .btext{flex-basis:calc(100% - 30px)}
+  .banner .bact{margin-left:auto}
+}
+@media (max-width:480px){
+  .row2,.meta{grid-template-columns:1fr}
+  .seg button{padding:0 6px;font-size:12.5px}
+  .dscroll{padding:18px}
+}
+</style>
+</head>
+<body>
+
+<div id="login" class="login" hidden>
+  <form class="lcard" data-form="login" autocomplete="off">
+    <span class="mark">ISE</span>
+    <div>
+      <h1>International Simple English</h1>
+      <p class="sub">Tasks, meeting notes, work logs and links for the two of you.</p>
+    </div>
+    <div class="field">
+      <span class="lab">Who's signing in?</span>
+      <div class="who">
+        <button type="button" class="whobtn" data-act="who" data-v="aarjit" id="who-aarjit"><span class="av lg av-aarjit">A</span>Aarjit</button>
+        <button type="button" class="whobtn" data-act="who" data-v="mo" id="who-mo"><span class="av lg av-mo">MR</span>Mo Riddiford</button>
+      </div>
+    </div>
+    <label class="field" for="pw"><span class="lab">Password</span>
+      <input class="in" id="pw" type="password" inputmode="numeric" autocomplete="current-password" placeholder="Enter your password">
+    </label>
+    <p class="lerr" id="loginErr" role="alert"></p>
+    <p class="lerr" id="setupNote" hidden>This copy is not connected to Google Sheets yet. Paste your Apps Script web app address into API_URL near the top of the script in index.html. See README.md, step 5.</p>
+    <button class="btn primary" type="submit" id="loginBtn" style="height:46px">Sign in</button>
+  </form>
+</div>
+
+<div id="app" class="app" hidden></div>
+<div id="drawer" class="overlay" hidden></div>
+<div id="modal" class="overlay center" hidden></div>
+<div id="toast" class="toast" role="status" hidden></div>
+
+<script>
+(function(){
+"use strict";
+
+/* =====================================================================
+   CONFIG: paste your Google Apps Script web app address here.
+   It looks like https://script.google.com/macros/s/AKfy.../exec
+   (README.md, step 5). Passwords are NOT stored in this file; they live
+   in the Apps Script's Script Properties.
+   ===================================================================== */
+const API_URL = 'https://script.google.com/macros/s/AKfycbxgRk5jgqwXsf7XI4pU_tfPZ6YqBETxcAmdBV1uSKkbA-q6g2PnjZh-9e2WcKgNCn5-Ug/exec';
+
+/* ================= basics ================= */
+const U = {
+  aarjit:{name:'Aarjit', short:'Aarjit', ini:'A'},
+  mo:{name:'Mo Riddiford', short:'Mo', ini:'MR'}
+};
+const other = k => k === 'aarjit' ? 'mo' : 'aarjit';
+const URG = {low:'Low', medium:'Medium', high:'High', urgent:'Urgent'};
+const URG_W = {urgent:0, high:1, medium:2, low:3};
+const ST = {todo:'To do', doing:'In progress', done:'Done'};
+const VIEWS = {tasks:['Tasks','tasks'], notes:['Meet notes','notes'], logs:['Work logs','logs'], links:['Links','link']};
+const P = {
+  tasks:'<path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/>',
+  notes:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
+  logs:'<rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 2v4M16 2v4M3 10h18M8 14h4M8 17h7"/>',
+  link:'<path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/>',
+  bell:'<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
+  plus:'<path d="M12 5v14M5 12h14"/>', x:'<path d="M18 6 6 18M6 6l12 12"/>', check:'<path d="M20 6 9 17l-5-5"/>',
+  chat:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+  send:'<path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/>',
+  trash:'<path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>',
+  edit:'<path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+  copy:'<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',
+  ext:'<path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>',
+  back:'<path d="m15 18-6-6 6-6"/>',
+  logout:'<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>',
+  cal:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M16 3v4M8 3v4M3 11h18"/>'
+};
+const ic = n => `<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]||''}</svg>`;
+const $ = (s, r=document) => r.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+const av = (k, size='') => U[k] ? `<span class="av av-${k} ${size}" title="${esc(U[k].name)}">${esc(U[k].ini)}</span>` : `<span class="av av-x ${size}">?</span>`;
+const nm = k => U[k] ? U[k].short : 'Someone';
+const urgKey = u => URG[u] ? u : 'medium';
+const clampP = p => Math.max(0, Math.min(100, Math.round(Number(p) || 0)));
+const wide = () => window.matchMedia('(min-width: 901px)').matches;
+function lsGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+function lsSet(k, v){ try { localStorage.setItem(k, v); } catch(e){} }
+function lsDel(k){ try { localStorage.removeItem(k); } catch(e){} }
+
+/* ================= dates ================= */
+function today(){ const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); }
+function parseD(s){ if (!/^\d{4}-\d{2}-\d{2}$/.test(s || '')) return null; const [y,m,d] = s.split('-').map(Number); return new Date(y, m-1, d); }
+function fmtDate(s){ const d = parseD(s); if (!d) return ''; const o = {day:'numeric', month:'short'}; if (d.getFullYear() !== new Date().getFullYear()) o.year = 'numeric'; return d.toLocaleDateString('en-GB', o); }
+function dayDiff(s){ const d = parseD(s); return d ? Math.round((d - parseD(today())) / 86400000) : null; }
+function dueInfo(t){
+  if (!t.due) return {txt:'No estimate', cls:''};
+  if (t.status === 'done') return {txt:'Est. ' + fmtDate(t.due), cls:''};
+  const n = dayDiff(t.due);
+  if (n < 0) return {txt:`Overdue by ${-n}d`, cls:'over'};
+  if (n === 0) return {txt:'Due today', cls:'soon'};
+  if (n === 1) return {txt:'Due tomorrow', cls:'soon'};
+  if (n < 7) return {txt:`Due in ${n} days`, cls:''};
+  return {txt:'Due ' + fmtDate(t.due), cls:''};
+}
+function rel(ts){
+  if (!ts) return '';
+  const s = (Date.now() - ts) / 1000;
+  if (s < 60) return 'just now';
+  if (s < 3600) return Math.floor(s/60) + 'm ago';
+  if (s < 86400) return Math.floor(s/3600) + 'h ago';
+  const d = new Date(ts), y = new Date(); y.setDate(y.getDate()-1);
+  if (d.toDateString() === y.toDateString()) return 'Yesterday';
+  return d.toLocaleDateString('en-GB', {day:'numeric', month:'short'});
+}
+function clock(ts){ return ts ? new Date(ts).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}) : ''; }
+function dayLabel(s){
+  const d = parseD(s); if (!d) return 'No date';
+  const base = d.toLocaleDateString('en-GB', {weekday:'long', day:'numeric', month:'short'});
+  const n = dayDiff(s);
+  return n === 0 ? 'Today · ' + base : n === -1 ? 'Yesterday · ' + base : base;
+}
+
+/* ================= storage: Google Sheets through an Apps Script web app ================= */
+let syncState = 'connecting';
+const configured = /^https:\/\/script\.google(usercontent)?\.com\//.test(API_URL);
+const COLS = ['tasks', 'notes', 'logs', 'links', 'feed'];
+const NUM_F = new Set(['progress', 'hours', 'at', 'createdAt', 'updatedAt', 'seenAt']);
+const JSON_F = new Set(['comments', 'events', 'readIds']);
+async function api(action, payload){
+  // A plain-text POST keeps this a "simple" request, so Apps Script needs no CORS preflight.
+  const body = JSON.stringify(Object.assign({action, token:lsGet('ise:token') || ''}, payload || {}));
+  let res, j;
+  try { res = await fetch(API_URL, {method:'POST', body, redirect:'follow'}); } catch(e){ throw {code:'network'}; }
+  try { j = await res.json(); } catch(e){ throw {code:'server'}; }
+  if (!j || !j.ok) throw {code:(j && j.error) || 'server', message:j && j.message};
+  return j;
+}
+function typeRow(row){
+  const o = {};
+  for (const k in row){
+    const v = row[k];
+    if (NUM_F.has(k)) o[k] = Number(v) || 0;
+    else if (JSON_F.has(k)){ try { o[k] = JSON.parse(v); } catch(e){ o[k] = []; } }
+    else o[k] = String(v);
+  }
+  return o;
+}
+const Store = {
+  cache:{}, subs:{}, version:null, timer:null, busy:false, again:false, pending:0,
+  watch(col, cb){ (this.subs[col] = this.subs[col] || []).push(cb); },
+  _list(col){ const m = this.cache[col] || {}; return Object.keys(m).map(id => Object.assign({}, m[id])); },
+  _emit(col){ (this.subs[col] || []).forEach(cb => cb(this._list(col))); },
+  start(){
+    this.stop(); setSync('connecting'); this.poll();
+    this.timer = setInterval(() => { if (!document.hidden) this.poll(); }, 12000);
+  },
+  stop(){ clearInterval(this.timer); this.timer = null; this.cache = {}; this.version = null; },
+  async poll(){
+    if (!me || !configured) return;
+    if (this.busy || this.pending){ this.again = true; return; }
+    this.busy = true;
+    try {
+      const r = await api('poll', {version:this.version});
+      if (r.changed && !this.pending && me){
+        this.version = r.version;
+        COLS.forEach(col => {
+          const m = {};
+          ((r.data || {})[col] || []).forEach(row => { if (row.id) m[row.id] = typeRow(row); });
+          this.cache[col] = m; this._emit(col);
+        });
+      }
+      setSync('live');
+    } catch(e){
+      if (e.code === 'auth'){ this.busy = false; sessionEnded(); return; }
+      setSync(e.code === 'network' ? 'offline' : 'error');
+    } finally {
+      this.busy = false;
+      if (this.again && me){ this.again = false; setTimeout(() => this.poll(), 100); }
+    }
+  },
+  async _write(action, col, id, body){
+    const m = this.cache[col] = this.cache[col] || {};
+    const prev = m[id] ? Object.assign({}, m[id]) : null;
+    if (action === 'update' && !prev) throw {code:'not_found'};
+    const clean = body ? JSON.parse(JSON.stringify(body)) : null;
+    if (clean) delete clean.id;
+    // Show the change right away, then confirm with the sheet.
+    if (action === 'remove') delete m[id];
+    else m[id] = Object.assign({}, action === 'update' ? prev : {}, clean, {id});
+    this._emit(col);
+    this.pending++;
+    try { await api(action, {col, id, data:clean}); }
+    catch(e){
+      if (prev) m[id] = prev; else delete m[id];
+      this._emit(col);
+      if (e.code === 'auth') setTimeout(sessionEnded, 0);
+      throw e;
+    } finally {
+      this.pending--;
+      if (!this.pending){ this.version = null; this.poll(); }
+    }
+  },
+  set(col, id, body){ return this._write('set', col, id, body); },
+  update(col, id, patch){ return this._write('update', col, id, patch); },
+  remove(col, id){ return this._write('remove', col, id); }
+};
+function errMsg(e){
+  const c = e && e.code;
+  if (c === 'network') return "Couldn't reach Google Sheets. Check your connection and try again.";
+  if (c === 'auth') return 'Your session ended. Please sign in again.';
+  if (c === 'too_large') return 'That is too long for one Google Sheets cell. Split it into two.';
+  if (c === 'not_found') return 'That item was deleted.';
+  if (c === 'forbidden') return "You can't change that.";
+  return "Couldn't save right now. Try again in a moment.";
+}
+
+/* ================= state ================= */
+let me = null, view = 'tasks';
+const data = {tasks:[], notes:[], logs:[], links:[], feed:[]};
+const loaded = {};
+let taskFilter = 'open', logFilter = 'all';
+let openTaskId = null, activeNoteId = null, pendingNote = null, confirmKey = null, panelKind = null;
+let dragging = false, loginWho = null;
+const openThreads = new Set();
+
+/* ================= notifications (each person writes only their own feed doc) ================= */
+let pendingFeed = null;
+function feedOf(k){ const f = data.feed.find(x => x.id === k) || {}; return {events:f.events || [], readIds:f.readIds || [], seenAt:f.seenAt || 0}; }
+function myFeed(){ return pendingFeed || feedOf(me); }
+function writeFeed(mut){
+  if (!me) return;
+  const cur = myFeed();
+  const next = {events:[...cur.events], readIds:[...cur.readIds], seenAt:cur.seenAt};
+  mut(next); pendingFeed = next; schedule();
+  Store.set('feed', me, next).then(() => { if (pendingFeed === next) pendingFeed = null; })
+    .catch(e => { if (pendingFeed === next) pendingFeed = null; console.warn(e); });
+}
+function notify(kind, col, ref, title, text, extra){
+  const ev = Object.assign({id:uid(), at:Date.now(), by:me, kind, col, ref, title:String(title || '').slice(0,140), text:String(text || '').slice(0,180)}, extra || {});
+  writeFeed(f => { f.events = [ev, ...f.events].slice(0, 50); });
+}
+function unread(){
+  if (!me) return [];
+  const mine = myFeed(), rs = new Set(mine.readIds);
+  return feedOf(other(me)).events.filter(e => e && e.at > mine.seenAt && !rs.has(e.id));
+}
+function markRead(ids){
+  const rs = new Set(myFeed().readIds);
+  const fresh = ids.filter(i => !rs.has(i));
+  if (!fresh.length) return;
+  writeFeed(f => { f.readIds = [...fresh, ...f.readIds].slice(0, 200); });
+}
+function markAllRead(){ writeFeed(f => { f.seenAt = Date.now(); f.readIds = []; }); }
+function evText(e){
+  const who = `<b>${esc(nm(e.by))}</b>`, t = `“${esc(e.title)}”`;
+  switch (e.kind){
+    case 'task_new': return e.assignee === me ? `${who} assigned you ${t}` : `${who} added the task ${t}`;
+    case 'task_edit': return `${who} edited ${t}`;
+    case 'task_update': return `${who} updated ${t}: ${esc(e.text)}`;
+    case 'comment': return `${who} commented on ${t}`;
+    case 'note_new': return `${who} started a meet note ${t}`;
+    case 'log_new': return `${who} added a work log`;
+    case 'link_new': return `${who} shared a link ${t}`;
+    default: return `${who} made an update`;
+  }
+}
+const evSnip = e => (e.kind === 'comment' || e.kind === 'log_new') && e.text ? e.text : '';
+
+/* ================= toast ================= */
+let toastT = null;
+function toast(msg){ const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => { t.hidden = true; }, 2800); }
+
+/* ================= render scheduling ================= */
+let raf = 0;
+function schedule(){ if (raf) return; raf = requestAnimationFrame(() => { raf = 0; if (!me) return; refreshChrome(); refreshView(); refreshDrawer(); }); }
+function setSync(s){ syncState = s; schedule(); }
+function syncHTML(){
+  const m = {
+    connecting:['', 'Connecting to Google Sheets…'], live:['live', 'Synced with Google Sheets'],
+    offline:['bad', "You're offline. Changes won't save."], error:['warn', "Can't reach Google Sheets. Retrying…"]
+  }[syncState] || ['', ''];
+  return `<div class="sync ${m[0]}"><i></i><span>${m[1]}</span></div>`;
+}
+
+/* ================= shell ================= */
+function showScreen(){
+  $('#login').hidden = !!me;
+  $('#app').hidden = !me;
+  if (me){ renderShell(); mountView(); }
+  else { loginWho = null; $('#pw').value = ''; $('#loginErr').textContent = ''; document.querySelectorAll('.whobtn').forEach(b => b.classList.remove('on')); }
+}
+function renderShell(){
+  const navBtns = Object.entries(VIEWS).map(([k, v]) => `<button data-act="view" data-v="${k}" data-nav="${k}">${ic(v[1])}<span>${v[0]}</span><span class="cnt" hidden></span></button>`).join('');
+  $('#app').innerHTML = `
+  <aside class="side">
+    <div class="brand"><span class="mark">ISE</span><b>International Simple English</b></div>
+    <nav class="nav" aria-label="Sections">${navBtns}</nav>
+    <div class="side-foot">
+      <div id="sync"></div>
+      <div class="me">${av(me)}<div class="mename"><b>${esc(U[me].name)}</b><span>Signed in</span></div>
+        <button class="icon-btn" data-act="logout" title="Sign out" aria-label="Sign out">${ic('logout')}</button></div>
+    </div>
+  </aside>
+  <div class="main">
+    <header class="top pad">
+      <span class="mark sm only-m">ISE</span>
+      <div class="ttl"><h2 id="crumb"></h2><span class="muted" id="todayLbl"></span></div>
+      <button class="bell" id="bell" data-act="togglePanel" data-v="notif" aria-label="Notifications">${ic('bell')}<span class="badge" id="badge" hidden></span></button>
+      <button class="only-m" data-act="togglePanel" data-v="me" aria-label="Account">${av(me,'sm')}</button>
+    </header>
+    <div class="bannerwrap pad" id="bannerWrap"></div>
+    <main id="view" class="view pad"></main>
+  </div>
+  <nav class="tabbar" aria-label="Sections">${navBtns}</nav>
+  <div class="panel" id="panel" hidden></div>`;
+}
+function refreshChrome(){
+  const un = unread();
+  const byCol = {};
+  un.forEach(e => { byCol[e.col] = (byCol[e.col] || 0) + 1; });
+  document.querySelectorAll('[data-nav]').forEach(b => {
+    const k = b.dataset.nav; b.classList.toggle('on', k === view);
+    const c = b.querySelector('.cnt'); c.hidden = !byCol[k]; c.textContent = byCol[k] || '';
+  });
+  const badge = $('#badge'); badge.hidden = !un.length; badge.textContent = un.length > 9 ? '9+' : un.length;
+  $('#crumb').textContent = VIEWS[view][0];
+  $('#todayLbl').textContent = new Date().toLocaleDateString('en-GB', {weekday:'long', day:'numeric', month:'long'});
+  $('#sync').innerHTML = syncHTML();
+  document.title = (un.length ? `(${un.length}) ` : '') + 'International Simple English';
+  // banner: newest unread update from the other person
+  const bw = $('#bannerWrap');
+  if (un.length){
+    const e = un[0], snip = evSnip(e);
+    bw.innerHTML = `<div class="banner" role="status"><span class="pulse"></span>
+      <div class="btext">${evText(e)}${snip ? `<span class="bsnip">${esc(snip)}</span>` : ''}</div>
+      <div class="bact">${un.length > 1 ? `<button class="link" data-act="togglePanel" data-v="notif">+${un.length - 1} more</button>` : ''}
+        <button class="btn primary sm" data-act="openEvent" data-id="${esc(e.id)}">Open</button>
+        <button class="icon-btn" data-act="markAll" title="Mark all as read" aria-label="Mark all as read">${ic('x')}</button></div></div>`;
+  } else bw.innerHTML = '';
+  renderPanel();
+}
+function renderPanel(){
+  const p = $('#panel'); if (!p) return;
+  p.hidden = !panelKind;
+  const bell = $('#bell'); if (bell) bell.classList.toggle('on', panelKind === 'notif');
+  if (!panelKind) return;
+  if (panelKind === 'me'){
+    p.innerHTML = `<div class="pme"><div class="me">${av(me)}<div class="mename"><b>${esc(U[me].name)}</b><span>Signed in</span></div></div>${syncHTML()}
+      <button class="btn ghost" data-act="logout">${ic('logout')} Sign out</button></div>`;
+    return;
+  }
+  const o = other(me), evs = feedOf(o).events.slice(0, 30), un = new Set(unread().map(e => e.id));
+  p.innerHTML = `<div class="phead"><b>Updates from ${esc(nm(o))}</b>${un.size ? '<button class="link" data-act="markAll">Mark all read</button>' : ''}</div>` +
+    (evs.length ? `<div class="plist">${evs.map(e => `<button class="pitem ${un.has(e.id) ? 'unread' : ''}" data-act="openEvent" data-id="${esc(e.id)}">${av(e.by,'sm')}
+      <div><div class="ptext">${evText(e)}</div>${evSnip(e) ? `<div class="psnip">${esc(evSnip(e))}</div>` : ''}<div class="ptime">${rel(e.at)}</div></div></button>`).join('')}</div>`
+    : `<p class="pempty">Nothing yet. When ${esc(nm(o))} assigns a task, comments, or shares a link, it shows up here.</p>`);
+}
+function setView(v){
+  if (!VIEWS[v]) v = 'tasks';
+  if (view === 'notes') flushNote();
+  view = v; lsSet('ise:view', v); panelKind = null; confirmKey = null;
+  mountView(); window.scrollTo(0, 0);
+}
+function mountView(){
+  ({tasks:mountTasks, notes:mountNotes, logs:mountLogs, links:mountLinks})[view]();
+  refreshChrome();
+}
+function refreshView(){ ({tasks:refreshTasks, notes:refreshNotes, logs:refreshLogs, links:refreshLinks})[view](); }
+function preserve(root, fn){
+  const vals = {};
+  root.querySelectorAll('textarea[id],input[id]').forEach(x => { vals[x.id] = x.value; });
+  const ae = document.activeElement, aid = ae && root.contains(ae) ? ae.id : null;
+  let ss = null, se = null; if (aid){ try { ss = ae.selectionStart; se = ae.selectionEnd; } catch(e){} }
+  fn();
+  for (const k in vals){ const x = document.getElementById(k); if (x && root.contains(x)) x.value = vals[k]; }
+  if (aid){ const x = document.getElementById(aid); if (x){ x.focus({preventScroll:true}); try { if (ss != null) x.setSelectionRange(ss, se); } catch(e){} } }
+}
+const loadingHTML = '<div class="loading">Loading…</div>';
+const emptyHTML = (icon, title, text, btn) => `<div class="empty"><span class="eic">${ic(icon)}</span><b>${title}</b><p>${text}</p>${btn || ''}</div>`;
+function commentsHTML(list){
+  if (!list || !list.length) return '<p class="empty-sm">No comments yet.</p>';
+  return `<div class="cmts">${list.map(c => `<div class="cmt ${c.by === me ? 'mine' : ''}">${av(c.by,'sm')}<div class="cbody">
+    <div class="cmeta"><b>${esc(nm(c.by))}</b><span>${rel(c.at)}</span></div><div class="ctext">${esc(c.text)}</div></div></div>`).join('')}</div>`;
+}
+const composerHTML = (col, id, inputId, ph) => `<form class="composer" data-form="comment" data-col="${col}" data-id="${esc(id)}">
+  <textarea class="in" id="${inputId}" rows="1" placeholder="${ph || 'Write a comment…'}" aria-label="Comment"></textarea>
+  <button class="btn primary" type="submit" aria-label="Send comment">${ic('send')}</button></form>`;
+
+/* ================= tasks ================= */
+function mountTasks(){
+  $('#view').innerHTML = `
+    <div class="vhead"><div><h1>Tasks</h1><p class="sub" id="taskSum">Loading…</p></div>
+      <button class="btn primary" data-act="newTask">${ic('plus')} New task</button></div>
+    <div class="chips" id="taskFilters"></div>
+    <div class="tlist" id="taskList"></div>`;
+  refreshTasks();
+}
+function refreshTasks(){
+  const el = $('#taskList'); if (!el) return;
+  const o = other(me), all = data.tasks, open = all.filter(t => t.status !== 'done');
+  const counts = {open:open.length, mine:open.filter(t => t.assignee === me).length, theirs:open.filter(t => t.assignee === o).length, done:all.length - open.length};
+  $('#taskFilters').innerHTML = [['open','All open'], ['mine','For me'], ['theirs','For ' + nm(o)], ['done','Done']]
+    .map(([k, l]) => `<button class="chip ${taskFilter === k ? 'on' : ''}" data-act="taskFilter" data-v="${k}">${esc(l)}<span class="n">${counts[k]}</span></button>`).join('');
+  const urgentCount = open.filter(t => t.due && dayDiff(t.due) <= 0).length;
+  $('#taskSum').textContent = !loaded.tasks ? 'Loading…' : `${counts.open} open · ${counts.mine} for you` + (urgentCount ? ` · ${urgentCount} due today or overdue` : '');
+  if (!loaded.tasks){ el.innerHTML = loadingHTML; return; }
+  let list = taskFilter === 'done' ? all.filter(t => t.status === 'done')
+    : taskFilter === 'mine' ? open.filter(t => t.assignee === me)
+    : taskFilter === 'theirs' ? open.filter(t => t.assignee === o) : open;
+  if (taskFilter === 'done') list = [...list].sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+  else list = [...list].sort((a, b) => {
+    const da = a.due ? parseD(a.due).getTime() : Infinity, db = b.due ? parseD(b.due).getTime() : Infinity;
+    return da - db || URG_W[urgKey(a.urgency)] - URG_W[urgKey(b.urgency)] || (b.createdAt || 0) - (a.createdAt || 0);
+  });
+  if (!list.length){
+    el.innerHTML = taskFilter === 'done' ? emptyHTML('check', 'Nothing finished yet', 'Tasks you tick off will rest here.')
+      : emptyHTML('tasks', all.length ? 'All clear here' : 'No tasks yet', `Add a task, pick who it's for, how urgent it is, and when it should be finished.`, `<button class="btn primary" data-act="newTask">${ic('plus')} New task</button>`);
+    return;
+  }
+  const unreadRefs = new Set(unread().map(e => e.ref));
+  el.innerHTML = list.map(t => {
+    const d = dueInfo(t), p = clampP(t.progress), n = (t.comments || []).length, done = t.status === 'done', uk = urgKey(t.urgency);
+    return `<div class="trow ${done ? 'done' : ''}" data-act="openTask" data-id="${esc(t.id)}" tabindex="0" role="button" aria-label="Open task: ${esc(t.title)}">
+      <button class="check ${done ? 'on' : ''}" data-act="toggleDone" data-id="${esc(t.id)}" aria-label="${done ? 'Mark as not done' : 'Mark as done'}">${ic('check')}</button>
+      <div class="tmain"><div class="ttitle">${unreadRefs.has(t.id) ? '<i class="newdot" title="New activity"></i>' : ''}<span>${esc(t.title)}</span></div>
+        <div class="tmeta"><span class="pill u-${uk}">${URG[uk]}</span><span class="due ${d.cls}">${ic('cal')}${esc(d.txt)}</span>
+        ${n ? `<span>${ic('chat')}${n}</span>` : ''}${t.by && t.by !== t.assignee ? `<span>from ${esc(nm(t.by))}</span>` : ''}</div></div>
+      <div class="tside"><div class="bar"><i style="width:${p}%"></i></div><span class="pct">${p}%</span>${av(t.assignee,'sm')}</div></div>`;
+  }).join('');
+}
+function openTask(id){
+  openTaskId = id; confirmKey = null;
+  const d = $('#drawer'); d.hidden = false; document.body.classList.add('noscroll');
+  d.innerHTML = `<div class="scrim" data-act="closeDrawer"></div>
+    <aside class="dcard" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+      <div class="dhead" id="dHead"></div>
+      <div class="dscroll" id="dScroll"><div id="dBody" style="display:grid;gap:22px"></div>
+        <section class="thread"><h3 class="h3">Comments</h3><div id="dComments"></div></section></div>
+      ${composerHTML('tasks', id, 'dCmt')}
+    </aside>`;
+  refreshDrawer();
+}
+function closeDrawer(){ openTaskId = null; confirmKey = null; $('#drawer').hidden = true; $('#drawer').innerHTML = ''; if ($('#modal').hidden) document.body.classList.remove('noscroll'); }
+function refreshDrawer(){
+  if (!openTaskId || $('#drawer').hidden) return;
+  const t = data.tasks.find(x => x.id === openTaskId);
+  if (!t){ if (loaded.tasks){ closeDrawer(); toast('That task was deleted.'); } return; }
+  const uk = urgKey(t.urgency), p = clampP(t.progress), d = dueInfo(t), id = esc(t.id);
+  $('#dHead').innerHTML = confirmKey === 'task:' + t.id
+    ? `<span class="confirm">Delete this task for both of you?</span><span class="grow"></span><button class="btn ghost sm" data-act="cancelDel">Cancel</button><button class="btn red sm" data-act="delTask" data-id="${id}">Delete</button>`
+    : `<span class="pill u-${uk}">${URG[uk]} urgency</span><span class="grow"></span>
+       <button class="icon-btn" data-act="editTask" data-id="${id}" title="Edit task" aria-label="Edit task">${ic('edit')}</button>
+       <button class="icon-btn" data-act="askDel" data-v="task:${id}" title="Delete task" aria-label="Delete task">${ic('trash')}</button>
+       <button class="icon-btn" data-act="closeDrawer" aria-label="Close">${ic('x')}</button>`;
+  if (!dragging){
+    $('#dBody').innerHTML = `
+      <h2 class="dtitle" id="dTitle">${esc(t.title)}</h2>
+      <dl class="meta">
+        <div><dt>Assigned to</dt><dd>${av(t.assignee,'sm')}${esc(U[t.assignee] ? U[t.assignee].name : '—')}</dd></div>
+        <div><dt>Assigned by</dt><dd>${av(t.by,'sm')}${esc(U[t.by] ? U[t.by].name : '—')}</dd></div>
+        <div><dt>Date added</dt><dd>${esc(fmtDate(t.added) || '—')}</dd></div>
+        <div><dt>Estimated finish</dt><dd>${esc(t.due ? fmtDate(t.due) : 'Not set')}${t.due && t.status !== 'done' ? ` <span class="due ${d.cls}">${esc(d.txt)}</span>` : ''}</dd></div>
+      </dl>
+      <div class="box">
+        <div class="boxhead"><span class="lab">Progress</span><b id="dPct">${p}%</b></div>
+        <div class="seg" role="group" aria-label="Status">${Object.keys(ST).map(s => `<button type="button" class="${t.status === s ? 'on' : ''}" data-act="setStatus" data-v="${s}">${ST[s]}</button>`).join('')}</div>
+        <input type="range" id="dRange" min="0" max="100" step="5" value="${p}" style="--p:${p}%" aria-label="Progress percent">
+      </div>
+      ${t.notes ? `<div class="field"><span class="lab">Notes</span><p class="notestext">${esc(t.notes)}</p></div>` : ''}`;
+  }
+  const cm = $('#dComments'), sc = $('#dScroll');
+  const atBottom = sc.scrollHeight - sc.scrollTop - sc.clientHeight < 40;
+  const before = cm.querySelectorAll('.cmt').length;
+  cm.innerHTML = commentsHTML(t.comments);
+  if ((t.comments || []).length > before && before > 0 && atBottom) sc.scrollTop = sc.scrollHeight;
+  markRead(unread().filter(e => e.ref === t.id).map(e => e.id));
+}
+function statusFromPct(p){ return p >= 100 ? 'done' : p <= 0 ? 'todo' : 'doing'; }
+function pctForStatus(s, cur){ return s === 'done' ? 100 : s === 'todo' ? 0 : (cur > 0 && cur < 100 ? cur : 50); }
+async function updateTaskProgress(id, status, progress){
+  const t = data.tasks.find(x => x.id === id); if (!t) return;
+  if (t.status === status && clampP(t.progress) === progress) return;
+  try {
+    await Store.update('tasks', id, {status, progress, updatedAt:Date.now()});
+    notify('task_update', 'tasks', id, t.title, status === 'done' ? 'marked Done' : status !== t.status ? `${ST[status]}, ${progress}%` : `progress ${progress}%`);
+    if (status === 'done' && t.status !== 'done') toast('Nice, task done');
+  } catch(e){ toast(errMsg(e)); }
+}
+function setRange(r, v){ r.value = v; r.style.setProperty('--p', v + '%'); }
+function openTaskForm(id){
+  const t = id ? data.tasks.find(x => x.id === id) : null;
+  const v = t || {title:'', assignee:other(me), urgency:'medium', added:today(), due:'', status:'todo', progress:0, notes:''};
+  const p = clampP(v.progress), st = ST[v.status] ? v.status : 'todo';
+  const m = $('#modal'); m.hidden = false; document.body.classList.add('noscroll');
+  m.innerHTML = `<div class="scrim" data-act="closeModal"></div>
+  <form class="mcard" data-form="task" data-id="${t ? esc(t.id) : ''}" role="dialog" aria-modal="true" aria-labelledby="mTitle" novalidate>
+    <div class="mhead"><h2 id="mTitle">${t ? 'Edit task' : 'New task'}</h2><button type="button" class="icon-btn" data-act="closeModal" aria-label="Close">${ic('x')}</button></div>
+    <div class="mbody">
+      <label class="field" for="fTitle"><span class="lab">Task</span><input class="in title-in" id="fTitle" maxlength="200" placeholder="What needs to be done?"></label>
+      <div class="field"><span class="lab">Assign to</span><div class="seg" data-seg="assignee" data-value="${esc(v.assignee)}">
+        ${Object.keys(U).map(k => `<button type="button" data-act="seg" data-v="${k}" class="${v.assignee === k ? 'on' : ''}">${av(k,'xs')}${esc(U[k].short)}${k === me ? ' (me)' : ''}</button>`).join('')}</div></div>
+      <div class="field"><span class="lab">Urgency</span><div class="seg urg" data-seg="urgency" data-value="${esc(urgKey(v.urgency))}">
+        ${Object.keys(URG).map(k => `<button type="button" data-act="seg" data-v="${k}" class="u-${k} ${urgKey(v.urgency) === k ? 'on' : ''}"><i class="udot"></i>${URG[k]}</button>`).join('')}</div></div>
+      <div class="row2">
+        <label class="field" for="fAdded"><span class="lab">Date added</span><input class="in" type="date" id="fAdded"></label>
+        <label class="field" for="fDue"><span class="lab">Estimated finish</span><input class="in" type="date" id="fDue"></label>
+      </div>
+      <div class="field"><div class="boxhead"><span class="lab">Progress</span><b id="fPctLab" style="font:800 15px var(--f-head)">${p}%</b></div>
+        <div class="seg" data-seg="status" data-value="${st}">${Object.keys(ST).map(s => `<button type="button" data-act="seg" data-v="${s}" class="${st === s ? 'on' : ''}">${ST[s]}</button>`).join('')}</div>
+        <input type="range" id="fPct" min="0" max="100" step="5" aria-label="Progress percent"></div>
+      <label class="field" for="fNotes"><span class="lab">Notes</span><textarea class="in" id="fNotes" rows="4" placeholder="Details, context, what done looks like…"></textarea></label>
+      <p class="lerr" id="fErr" role="alert" style="min-height:0"></p>
+    </div>
+    <div class="mfoot"><button type="button" class="btn ghost" data-act="closeModal">Cancel</button><button class="btn primary" type="submit" id="fSubmit">${t ? 'Save changes' : 'Create task'}</button></div>
+  </form>`;
+  $('#fTitle').value = v.title || ''; $('#fAdded').value = v.added || today(); $('#fDue').value = v.due || ''; $('#fNotes').value = v.notes || '';
+  setRange($('#fPct'), p);
+  setTimeout(() => $('#fTitle').focus(), 30);
+}
+function closeModal(){ $('#modal').hidden = true; $('#modal').innerHTML = ''; if ($('#drawer').hidden) document.body.classList.remove('noscroll'); }
+function setFormStatusSeg(s){
+  const box = $('[data-seg="status"]'); if (!box) return;
+  box.dataset.value = s; box.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.v === s));
+}
+async function submitTask(f){
+  const id = f.dataset.id, title = $('#fTitle').value.trim();
+  if (!title){ $('#fErr').textContent = 'Give the task a short name.'; $('#fTitle').focus(); return; }
+  const seg = k => f.querySelector(`[data-seg="${k}"]`).dataset.value;
+  const progress = clampP($('#fPct').value);
+  const body = {title, assignee:seg('assignee'), urgency:seg('urgency'), added:$('#fAdded').value || today(), due:$('#fDue').value || '',
+    status:seg('status'), progress, notes:$('#fNotes').value.trim(), updatedAt:Date.now()};
+  $('#fSubmit').disabled = true;
+  try {
+    if (id){ await Store.update('tasks', id, body); notify('task_edit', 'tasks', id, title); toast('Task saved'); }
+    else {
+      const nid = uid();
+      await Store.set('tasks', nid, Object.assign({}, body, {by:me, createdAt:Date.now(), comments:[]}));
+      notify('task_new', 'tasks', nid, title, '', {assignee:body.assignee});
+      toast(body.assignee === me ? 'Task added' : `Task assigned to ${nm(body.assignee)}`);
+    }
+    closeModal();
+  } catch(e){ $('#fSubmit').disabled = false; $('#fErr').textContent = errMsg(e); }
+}
+
+/* ================= meet notes ================= */
+let noteTimer = null, noteDirty = false;
+function mountNotes(){
+  $('#view').innerHTML = `
+    <div class="vhead"><div><h1>Meet notes</h1><p class="sub">One shared page per call. Both of you can type, it saves as you go.</p></div>
+      <button class="btn primary" data-act="newNote">${ic('plus')} New note</button></div>
+    <div class="notes" id="notesWrap"><div class="nlist card" id="noteList"></div><div class="neditor card" id="noteEditor"></div></div>`;
+  mountNoteEditor(); refreshNotes();
+}
+function mountNoteEditor(){
+  const ed = $('#noteEditor'); if (!ed) return;
+  const n = data.notes.find(x => x.id === activeNoteId);
+  noteDirty = false;
+  if (!activeNoteId){
+    ed.innerHTML = `<div class="ned-empty"><div class="empty" style="border:0"><span class="eic">${ic('notes')}</span><b>Ready for your next call</b>
+      <p>Pick a note on the left, or start a new one when the Meet begins.</p><button class="btn primary" data-act="newNote">${ic('plus')} New note</button></div></div>`;
+    return;
+  }
+  ed.innerHTML = `
+    <div class="nebar"><button class="btn ghost sm back" data-act="noteBack">${ic('back')} All notes</button>
+      <span id="noteMeta"></span><span class="save" id="saveState"></span><span class="grow"></span><span id="noteDel"></span></div>
+    <input id="noteTitle" class="ntitle" placeholder="Untitled meeting" autocomplete="off" aria-label="Note title">
+    <div class="ntools" aria-label="Quick insert">
+      <button type="button" data-act="ins" data-v="action">+ Action item</button>
+      <button type="button" data-act="ins" data-v="decision">+ Decision</button>
+      <button type="button" data-act="ins" data-v="time">+ Time</button></div>
+    <textarea id="noteBody" class="nbody" aria-label="Note" placeholder="Agenda, what was discussed, decisions, next steps…"></textarea>
+    <details class="ncmts" id="noteCmts"><summary>${ic('chat')} Comments <span id="noteCmtN"></span></summary>
+      <div id="noteComments"></div>${composerHTML('notes', activeNoteId, 'noteCmt')}</details>`;
+  if (n){ $('#noteTitle').value = n.title || ''; $('#noteBody').value = n.body || ''; }
+}
+function flushNote(){ if (noteTimer){ clearTimeout(noteTimer); noteTimer = null; saveNote(); } }
+function setSave(s){ const el = $('#saveState'); if (el) el.textContent = s; }
+async function saveNote(){
+  noteTimer = null;
+  const id = activeNoteId, t = $('#noteTitle'), b = $('#noteBody');
+  if (!id || !t) return;
+  setSave('Saving…');
+  try {
+    await Store.update('notes', id, {title:t.value.trim() || 'Untitled meeting', body:b.value, updatedAt:Date.now(), updatedBy:me});
+    if (!noteTimer){ noteDirty = false; setSave('Saved'); }
+  } catch(e){ setSave('Not saved'); toast(errMsg(e)); }
+}
+function selectNote(id){ flushNote(); activeNoteId = id; confirmKey = null; mountNoteEditor(); refreshNotes(); window.scrollTo(0, 0); }
+async function newNote(){
+  flushNote();
+  const id = uid(), now = Date.now(), title = `Meet · ${fmtDate(today())}`;
+  try {
+    pendingNote = id;
+    await Store.set('notes', id, {title, body:'', by:me, createdAt:now, updatedAt:now, updatedBy:me, comments:[]});
+    activeNoteId = id; confirmKey = null;
+    if (view !== 'notes') setView('notes'); else { mountNoteEditor(); refreshNotes(); }
+    const b = $('#noteBody'); if (b) b.focus();
+    notify('note_new', 'notes', id, title);
+  } catch(e){ pendingNote = null; toast(errMsg(e)); }
+}
+function refreshNotes(){
+  const list = $('#noteList'); if (!list) return;
+  const notes = [...data.notes].sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+  if (pendingNote && notes.find(n => n.id === pendingNote)) pendingNote = null;
+  if (activeNoteId && loaded.notes && activeNoteId !== pendingNote && !notes.find(n => n.id === activeNoteId)){
+    if (noteTimer){ clearTimeout(noteTimer); noteTimer = null; }
+    activeNoteId = null; mountNoteEditor();
+  }
+  if (!activeNoteId && notes.length && wide()){ activeNoteId = notes[0].id; mountNoteEditor(); }
+  $('#notesWrap').classList.toggle('show-editor', !!activeNoteId);
+  const unreadRefs = new Set(unread().map(e => e.ref));
+  list.innerHTML = !loaded.notes ? loadingHTML : !notes.length
+    ? `<p class="empty-sm" style="padding:14px">No notes yet. Start one when your call begins.</p>`
+    : notes.map(n => {
+        const first = (n.body || '').split('\n').map(s => s.trim()).find(Boolean) || 'Empty note';
+        return `<button class="nitem ${n.id === activeNoteId ? 'on' : ''}" data-act="selectNote" data-id="${esc(n.id)}">
+          <span class="nt">${unreadRefs.has(n.id) ? '<i class="newdot"></i>' : ''}<span>${esc(n.title || 'Untitled meeting')}</span></span>
+          <span class="ns">${esc(first)}</span><span class="nm">${av(n.updatedBy || n.by,'xs')}${esc(rel(n.updatedAt))}</span></button>`;
+      }).join('');
+  const n = notes.find(x => x.id === activeNoteId);
+  if (!n || !$('#noteTitle')) return;
+  const t = $('#noteTitle'), b = $('#noteBody');
+  if (!noteDirty && !noteTimer){
+    if (document.activeElement !== t && t.value !== (n.title || '')) t.value = n.title || '';
+    if (document.activeElement !== b && b.value !== (n.body || '')) b.value = n.body || '';
+  }
+  const by = n.updatedBy || n.by;
+  $('#noteMeta').innerHTML = `${by && by !== me ? `<b>${esc(nm(by))}</b> edited ` : 'Edited '}${esc(rel(n.updatedAt))}`;
+  $('#noteDel').innerHTML = confirmKey === 'note:' + n.id
+    ? `<span class="inline-confirm">Delete this note? <button class="btn ghost sm" data-act="cancelDel">Cancel</button><button class="btn red sm" data-act="delNote" data-id="${esc(n.id)}">Delete</button></span>`
+    : `<button class="icon-btn" data-act="askDel" data-v="note:${esc(n.id)}" title="Delete note" aria-label="Delete note">${ic('trash')}</button>`;
+  const cc = (n.comments || []).length;
+  $('#noteCmtN').textContent = cc ? `(${cc})` : '';
+  $('#noteComments').innerHTML = cc ? commentsHTML(n.comments) : '';
+  const ids = unread().filter(e => e.ref === n.id).map(e => e.id);
+  if (ids.length){ if (unread().some(e => e.ref === n.id && e.kind === 'comment')) $('#noteCmts').open = true; markRead(ids); }
+}
+
+/* ================= work logs ================= */
+function mountLogs(){
+  $('#view').innerHTML = `
+    <div class="vhead"><div><h1>Work logs</h1><p class="sub">A shared daily record of what each of you got done.</p></div></div>
+    <form class="card logform" data-form="log">
+      <textarea class="in" id="logText" placeholder="What did you work on today? One line per item works well." aria-label="Work log"></textarea>
+      <div class="lfrow">
+        <label class="mini" for="logDate">Date<input class="in" type="date" id="logDate"></label>
+        <label class="mini" for="logHours">Hours<input class="in" type="number" id="logHours" min="0" max="24" step="0.5" placeholder="Optional"></label>
+        <span class="grow"></span>
+        <span class="muted" style="font-size:13px;display:inline-flex;align-items:center;gap:6px">${av(me,'xs')} Posting as ${esc(nm(me))}</span>
+        <button class="btn primary" type="submit">Add log</button>
+      </div>
+    </form>
+    <div class="chips" id="logFilters"></div>
+    <div id="logFeed" style="display:grid;gap:22px"></div>`;
+  $('#logDate').value = today();
+  refreshLogs();
+}
+function refreshLogs(){
+  const feed = $('#logFeed'); if (!feed) return;
+  $('#logFilters').innerHTML = [['all','Everyone'], ['aarjit','Aarjit'], ['mo','Mo Riddiford']]
+    .map(([k, l]) => `<button class="chip ${logFilter === k ? 'on' : ''}" data-act="logFilter" data-v="${k}">${k !== 'all' ? av(k,'xs') : ''}${esc(l)}</button>`).join('');
+  preserve(feed, () => {
+    if (!loaded.logs){ feed.innerHTML = loadingHTML; return; }
+    const logs = data.logs.filter(l => logFilter === 'all' || l.by === logFilter);
+    if (!logs.length){ feed.innerHTML = emptyHTML('logs', 'No work logs yet', 'Write a few lines at the end of the day. You will both see them here, grouped by date.'); return; }
+    const groups = {};
+    logs.forEach(l => { (groups[l.date || ''] = groups[l.date || ''] || []).push(l); });
+    feed.innerHTML = Object.keys(groups).sort().reverse().map(date => {
+      const items = groups[date].sort((a, b) => (b.at || 0) - (a.at || 0));
+      const hrs = {};
+      items.forEach(l => { if (l.hours) hrs[l.by] = (hrs[l.by] || 0) + Number(l.hours); });
+      const hsum = Object.keys(hrs).map(k => `${nm(k)} ${Math.round(hrs[k] * 10) / 10}h`).join(' · ');
+      return `<section class="day"><div class="dayh"><h3>${esc(dayLabel(date))}</h3><span>${esc(hsum)}</span></div><div class="daylist">${items.map(logHTML).join('')}</div></section>`;
+    }).join('');
+  });
+  const ids = unread().filter(e => e.col === 'logs').map(e => e.id);
+  if (ids.length) markRead(ids);
+}
+function logHTML(l){
+  const id = esc(l.id), n = (l.comments || []).length, open = openThreads.has(l.id);
+  const del = l.by !== me ? '' : confirmKey === 'log:' + l.id
+    ? `<span class="inline-confirm">Delete? <button class="link" data-act="cancelDel">Cancel</button><button class="link" style="color:var(--danger)" data-act="delLog" data-id="${id}">Delete</button></span>`
+    : `<button class="link" style="color:var(--muted)" data-act="askDel" data-v="log:${id}">Delete</button>`;
+  return `<article class="log" id="log-${id}">${av(l.by)}
+    <div class="lbody"><div class="lmeta"><b>${esc(U[l.by] ? U[l.by].name : 'Someone')}</b><span>${esc(clock(l.at))}</span>${l.hours ? `<span class="hrs">${esc(l.hours)}h</span>` : ''}</div>
+      <div class="ltext">${esc(l.text)}</div>
+      <div class="lact"><button class="link" data-act="toggleThread" data-id="${id}">${open ? 'Hide replies' : n ? `${n} repl${n === 1 ? 'y' : 'ies'}` : 'Reply'}</button>${del}</div>
+      ${open ? `<div class="lthread">${n ? commentsHTML(l.comments) : ''}${composerHTML('logs', l.id, 'lc-' + l.id, 'Write a reply…')}</div>` : ''}
+    </div></article>`;
+}
+
+/* ================= links ================= */
+function linkKind(u){
+  let h = '', p = '';
+  try { const x = new URL(u); h = x.hostname.replace(/^www\./, ''); p = x.pathname; } catch(e){}
+  if (h === 'docs.google.com'){
+    if (p.startsWith('/document')) return ['doc', 'Doc', 'Google Doc'];
+    if (p.startsWith('/spreadsheets')) return ['sheet', 'Sheet', 'Google Sheet'];
+    if (p.startsWith('/presentation')) return ['slides', 'Slides', 'Google Slides'];
+    if (p.startsWith('/forms')) return ['form', 'Form', 'Google Form'];
+  }
+  if (h === 'forms.gle') return ['form', 'Form', 'Google Form'];
+  if (h === 'drive.google.com') return ['drive', 'Drive', 'Google Drive'];
+  if (h === 'meet.google.com') return ['meet', 'Meet', 'Google Meet'];
+  return ['web', (h.split('.')[0] || 'web').slice(0, 4), h || 'Link'];
+}
+function mountLinks(){
+  const o = other(me);
+  $('#view').innerHTML = `
+    <div class="vhead"><div><h1>Links</h1><p class="sub">Docs, sheets and anything else you both need to find again.</p></div></div>
+    <form class="card linkform" data-form="link" novalidate>
+      <input class="in full" id="linkUrl" type="url" inputmode="url" placeholder="Paste a link: Google Doc, Sheet, Drive folder…" aria-label="Link address">
+      <input class="in" id="linkTitle" maxlength="120" placeholder="Name (optional)" aria-label="Name">
+      <input class="in" id="linkNote" maxlength="240" placeholder="Note (optional)" aria-label="Note">
+      <div class="lfoot"><label class="toggle"><input type="checkbox" id="linkNotify" checked> Let ${esc(nm(o))} know</label>
+        <span class="lerr" id="linkErr" role="alert" style="min-height:0"></span><span class="grow"></span>
+        <button class="btn primary" type="submit">Save link</button></div>
+    </form>
+    <div class="lgrid" id="linkList"></div>`;
+  refreshLinks();
+}
+function refreshLinks(){
+  const el = $('#linkList'); if (!el) return;
+  if (!loaded.links){ el.innerHTML = loadingHTML; return; }
+  const links = [...data.links].sort((a, b) => (b.at || 0) - (a.at || 0));
+  if (!links.length){ el.innerHTML = `<div style="grid-column:1/-1">${emptyHTML('link', 'No links saved', 'Paste a Google Doc, Sheet or any address above. It stays here for both of you.')}</div>`; }
+  else el.innerHTML = links.map(l => {
+    const [k, ab, label] = linkKind(l.url), id = esc(l.id), safe = /^https:\/\//i.test(l.url || '');
+    let host = ''; try { host = new URL(l.url).hostname.replace(/^www\./, ''); } catch(e){}
+    const title = esc(l.title || label);
+    return `<article class="card lk" id="link-${id}"><span class="kind k-${k}">${esc(ab)}</span>
+      <div class="lkmain">${safe ? `<a class="lktitle" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">${title}${ic('ext')}</a>` : `<span class="lktitle">${title}</span>`}
+        <span class="lkdom">${esc(k === 'web' ? host : label + ' · ' + host)}</span>
+        ${l.note ? `<p class="lknote">${esc(l.note)}</p>` : ''}
+        <span class="lkmeta">${av(l.by,'xs')}${esc(nm(l.by))} · ${esc(rel(l.at))}</span>
+        ${confirmKey === 'link:' + l.id ? `<span class="inline-confirm" style="margin-top:6px">Remove for both? <button class="btn ghost sm" data-act="cancelDel">Cancel</button><button class="btn red sm" data-act="delLink" data-id="${id}">Remove</button></span>` : ''}
+      </div>
+      <div class="lkact"><button class="icon-btn" data-act="copyLink" data-id="${id}" title="Copy link" aria-label="Copy link">${ic('copy')}</button>
+        <button class="icon-btn" data-act="askDel" data-v="link:${id}" title="Remove link" aria-label="Remove link">${ic('trash')}</button></div></article>`;
+  }).join('');
+  const ids = unread().filter(e => e.col === 'links').map(e => e.id);
+  if (ids.length) markRead(ids);
+}
+async function submitLink(){
+  const err = $('#linkErr'); err.textContent = '';
+  let u = $('#linkUrl').value.trim();
+  if (!u){ err.textContent = 'Paste a link first.'; $('#linkUrl').focus(); return; }
+  if (!/^[a-z][a-z0-9+.-]*:\/\//i.test(u)) u = 'https://' + u;
+  u = u.replace(/^http:\/\//i, 'https://');
+  let ok = false; try { const x = new URL(u); ok = x.protocol === 'https:' && x.hostname.includes('.'); } catch(e){}
+  if (!ok){ err.textContent = "That doesn't look like a web address."; return; }
+  const [, , label] = linkKind(u);
+  const title = $('#linkTitle').value.trim() || label, note = $('#linkNote').value.trim(), id = uid();
+  try {
+    await Store.set('links', id, {url:u, title, note, by:me, at:Date.now()});
+    if ($('#linkNotify').checked) notify('link_new', 'links', id, title, note);
+    $('#linkUrl').value = ''; $('#linkTitle').value = ''; $('#linkNote').value = '';
+    toast($('#linkNotify').checked ? `Saved. ${nm(other(me))} will see it at the top.` : 'Link saved');
+  } catch(e){ err.textContent = errMsg(e); }
+}
+
+/* ================= shared actions ================= */
+function titleOf(col, item){
+  if (col === 'logs') return `work log · ${fmtDate(item.date)}`;
+  return item.title || 'Untitled';
+}
+async function addComment(col, id, text, input){
+  const item = data[col].find(x => x.id === id);
+  if (!item){ toast('That item was deleted.'); return; }
+  const c = {id:uid(), by:me, text, at:Date.now()};
+  try {
+    await Store.update(col, id, {comments:[...(item.comments || []), c]});
+    if (input){ input.value = ''; input.style.height = ''; }
+    notify('comment', col, id, titleOf(col, item), text);
+    if (col === 'tasks'){ const sc = $('#dScroll'); if (sc) setTimeout(() => { sc.scrollTop = sc.scrollHeight; }, 60); }
+  } catch(e){ toast(errMsg(e)); }
+}
+function go(col, ref){
+  panelKind = null;
+  const exists = (data[col] || []).some(x => x.id === ref);
+  if (!exists){ toast('That item was deleted.'); schedule(); return; }
+  if (col === 'tasks'){ if (view !== 'tasks') setView('tasks'); openTask(ref); }
+  else if (col === 'notes'){ flushNote(); activeNoteId = ref; if (view !== 'notes') setView('notes'); else { mountNoteEditor(); refreshNotes(); } }
+  else if (col === 'logs'){ openThreads.add(ref); logFilter = 'all'; if (view !== 'logs') setView('logs'); else refreshLogs(); flash('log-' + ref); }
+  else if (col === 'links'){ if (view !== 'links') setView('links'); flash('link-' + ref); }
+  schedule();
+}
+function flash(domId){
+  setTimeout(() => { const el = document.getElementById(domId); if (!el) return; el.scrollIntoView({block:'center', behavior:'smooth'}); el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); }, 80);
+}
+function insertAt(ta, text){
+  const s = ta.selectionStart ?? ta.value.length, e = ta.selectionEnd ?? s;
+  const needNl = s > 0 && ta.value[s - 1] !== '\n';
+  ta.focus(); ta.setRangeText((needNl ? '\n' : '') + text, s, e, 'end');
+  ta.dispatchEvent(new Event('input', {bubbles:true}));
+}
+
+/* ================= events ================= */
+document.addEventListener('click', e => {
+  const a = e.target.closest('[data-act]');
+  if (panelKind && !e.target.closest('#panel') && !(a && a.dataset.act === 'togglePanel')){
+    panelKind = null; renderPanel(); if (!a) return;
+  }
+  if (!a) return;
+  const act = a.dataset.act, id = a.dataset.id, v = a.dataset.v;
+  switch (act){
+    case 'who': {
+      loginWho = v; document.querySelectorAll('.whobtn').forEach(b => b.classList.toggle('on', b === a));
+      $('#loginErr').textContent = ''; $('#pw').focus(); break;
+    }
+    case 'view': setView(v); break;
+    case 'togglePanel': panelKind = panelKind === v ? null : v; renderPanel(); break;
+    case 'markAll': markAllRead(); panelKind = null; toast('All caught up'); break;
+    case 'openEvent': {
+      const ev = feedOf(other(me)).events.find(x => x.id === id);
+      if (ev){ markRead([ev.id]); go(ev.col, ev.ref); }
+      break;
+    }
+    case 'logout': doLogout(); break;
+    case 'newTask': openTaskForm(null); break;
+    case 'editTask': openTaskForm(id); break;
+    case 'taskFilter': taskFilter = v; refreshTasks(); break;
+    case 'openTask': openTask(id); break;
+    case 'closeDrawer': closeDrawer(); break;
+    case 'closeModal': closeModal(); break;
+    case 'toggleDone': {
+      const t = data.tasks.find(x => x.id === id);
+      if (t) updateTaskProgress(id, t.status === 'done' ? 'doing' : 'done', t.status === 'done' ? pctForStatus('doing', 90) : 100);
+      break;
+    }
+    case 'setStatus': { const t = data.tasks.find(x => x.id === openTaskId); if (t) updateTaskProgress(t.id, v, pctForStatus(v, clampP(t.progress))); break; }
+    case 'seg': {
+      const box = a.closest('[data-seg]'); box.dataset.value = v;
+      box.querySelectorAll('button').forEach(b => b.classList.toggle('on', b === a));
+      if (box.dataset.seg === 'status'){ const r = $('#fPct'), p = pctForStatus(v, clampP(r.value)); setRange(r, p); $('#fPctLab').textContent = p + '%'; }
+      break;
+    }
+    case 'askDel': confirmKey = v; schedule(); break;
+    case 'cancelDel': confirmKey = null; schedule(); break;
+    case 'delTask': confirmKey = null; Store.remove('tasks', id).then(() => { closeDrawer(); toast('Task deleted'); }).catch(err => toast(errMsg(err))); break;
+    case 'delNote':
+      confirmKey = null; if (noteTimer){ clearTimeout(noteTimer); noteTimer = null; }
+      Store.remove('notes', id).then(() => { activeNoteId = null; mountNoteEditor(); refreshNotes(); toast('Note deleted'); }).catch(err => toast(errMsg(err))); break;
+    case 'delLog': confirmKey = null; Store.remove('logs', id).then(() => toast('Log deleted')).catch(err => toast(errMsg(err))); break;
+    case 'delLink': confirmKey = null; Store.remove('links', id).then(() => toast('Link removed')).catch(err => toast(errMsg(err))); break;
+    case 'newNote': newNote(); break;
+    case 'selectNote': selectNote(id); break;
+    case 'noteBack': flushNote(); activeNoteId = null; mountNoteEditor(); refreshNotes(); break;
+    case 'ins': {
+      const b = $('#noteBody'); if (!b) break;
+      const t = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+      insertAt(b, v === 'action' ? '☐ ' : v === 'decision' ? '✓ Decision: ' : `[${t}] `);
+      break;
+    }
+    case 'logFilter': logFilter = v; refreshLogs(); break;
+    case 'toggleThread':
+      if (openThreads.has(id)) openThreads.delete(id); else openThreads.add(id);
+      refreshLogs();
+      if (openThreads.has(id)) setTimeout(() => { const x = document.getElementById('lc-' + id); if (x) x.focus(); }, 20);
+      break;
+    case 'copyLink': {
+      const l = data.links.find(x => x.id === id); if (!l) break;
+      try { navigator.clipboard.writeText(l.url).then(() => toast('Link copied'), () => toast("Couldn't copy. Open the link and copy it from there.")); }
+      catch(err){ toast("Couldn't copy. Open the link and copy it from there."); }
+      break;
+    }
+  }
+});
+document.addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target;
+  switch (f.dataset.form){
+    case 'login': submitLogin(); break;
+    case 'task': submitTask(f); break;
+    case 'comment': {
+      const ta = f.querySelector('textarea'), text = ta.value.trim();
+      if (text) addComment(f.dataset.col, f.dataset.id, text, ta);
+      break;
+    }
+    case 'log': {
+      const text = $('#logText').value.trim();
+      if (!text){ $('#logText').focus(); toast('Write what you worked on first.'); return; }
+      const h = parseFloat($('#logHours').value), date = $('#logDate').value || today(), id = uid();
+      Store.set('logs', id, {by:me, date, text, hours:isFinite(h) && h > 0 ? Math.round(h * 10) / 10 : 0, at:Date.now(), comments:[]})
+        .then(() => { $('#logText').value = ''; $('#logHours').value = ''; notify('log_new', 'logs', id, `work log · ${fmtDate(date)}`, text); toast('Log added'); })
+        .catch(err => toast(errMsg(err)));
+      break;
+    }
+    case 'link': submitLink(); break;
+  }
+});
+document.addEventListener('input', e => {
+  const t = e.target;
+  if (t.id === 'noteTitle' || t.id === 'noteBody'){
+    noteDirty = true; setSave('Editing…'); clearTimeout(noteTimer); noteTimer = setTimeout(saveNote, 700);
+  } else if (t.id === 'dRange'){
+    $('#dPct').textContent = t.value + '%'; t.style.setProperty('--p', t.value + '%');
+  } else if (t.id === 'fPct'){
+    t.style.setProperty('--p', t.value + '%'); $('#fPctLab').textContent = t.value + '%'; setFormStatusSeg(statusFromPct(+t.value));
+  } else if (t.matches('.composer textarea')){
+    t.style.height = 'auto'; t.style.height = Math.min(t.scrollHeight + 2, 160) + 'px';
+  }
+});
+document.addEventListener('change', e => {
+  if (e.target.id === 'dRange' && openTaskId){ dragging = false; const p = clampP(e.target.value); updateTaskProgress(openTaskId, statusFromPct(p), p); }
+});
+document.addEventListener('pointerdown', e => { if (e.target.id === 'dRange') dragging = true; });
+document.addEventListener('pointerup', () => { if (dragging) setTimeout(() => { dragging = false; }, 400); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape'){
+    if (!$('#modal').hidden) closeModal();
+    else if (!$('#drawer').hidden) closeDrawer();
+    else if (panelKind){ panelKind = null; renderPanel(); }
+    return;
+  }
+  const t = e.target;
+  if (e.key === 'Enter' && t.classList && t.classList.contains('trow')){ e.preventDefault(); openTask(t.dataset.id); }
+  if (e.key === 'Enter' && !e.shiftKey && t.matches && t.matches('.composer textarea')){ e.preventDefault(); t.form.requestSubmit(); }
+});
+window.addEventListener('beforeunload', flushNote);
+document.addEventListener('visibilitychange', () => { if (document.hidden) flushNote(); });
+setInterval(schedule, 60000);
+
+/* ================= sign in / out ================= */
+function resetData(){
+  COLS.forEach(c => { data[c] = []; loaded[c] = false; });
+  pendingFeed = null; openThreads.clear(); activeNoteId = null; openTaskId = null; confirmKey = null;
+}
+async function submitLogin(){
+  const err = $('#loginErr'), pw = $('#pw').value.trim(), btn = $('#loginBtn');
+  if (!configured){ err.textContent = 'Add your Apps Script web app address to index.html first (README.md, step 5).'; return; }
+  if (!loginWho){ err.textContent = 'Choose your name first.'; return; }
+  if (!pw){ err.textContent = 'Enter your password.'; $('#pw').focus(); return; }
+  btn.disabled = true; btn.textContent = 'Signing in…'; err.textContent = '';
+  try {
+    const r = await api('login', {user:loginWho, pass:pw});
+    lsSet('ise:token', r.token); lsSet('ise:me', loginWho);
+    resetData(); me = loginWho; showScreen(); Store.start();
+  } catch(e){
+    err.textContent = ({
+      bad_password:`That password doesn't match ${U[loginWho].short}'s. Try again.`,
+      locked:'Too many wrong tries. Wait 15 minutes, then try again.',
+      not_configured:'Passwords are not set in the Apps Script yet (README.md, step 3).',
+      network:"Couldn't reach Google. Check your connection and the API_URL in index.html."
+    })[e.code] || 'Something went wrong on the Google side. Try again in a moment.';
+    $('#pw').select();
+  } finally { btn.disabled = false; btn.textContent = 'Sign in'; }
+}
+function signOutLocal(){
+  Store.stop(); lsDel('ise:token'); lsDel('ise:me');
+  closeDrawer(); closeModal(); me = null; panelKind = null; resetData(); showScreen();
+}
+function doLogout(){
+  flushNote();
+  if (lsGet('ise:token')) api('logout').catch(() => {});
+  signOutLocal();
+}
+function sessionEnded(){
+  if (!me) return;
+  signOutLocal();
+  $('#loginErr').textContent = 'Your session ended. Please sign in again.';
+}
+
+/* ================= boot ================= */
+(function boot(){
+  const saved = lsGet('ise:me');
+  me = U[saved] && lsGet('ise:token') ? saved : null;
+  const sv = lsGet('ise:view'); if (VIEWS[sv]) view = sv;
+  COLS.forEach(col => Store.watch(col, list => { data[col] = list; loaded[col] = true; schedule(); }));
+  $('#setupNote').hidden = configured;
+  showScreen();
+  if (me) Store.start();
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && me) Store.poll(); });
+  window.addEventListener('online', () => { if (me) Store.poll(); });
+})();
+})();
+</script>
+</body>
+</html>
